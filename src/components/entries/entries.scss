@@ -1,0 +1,19 @@
+
+.entries-container {
+    width: 50%;
+    border: 1px solid lightgray;
+    border-radius: 1px;
+
+    padding: 15px;
+
+    p {
+        margin: 0;
+    }
+
+    .markdown-container {
+        border: 1px solid gray;
+        border-radius: 7px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+    }
+}
