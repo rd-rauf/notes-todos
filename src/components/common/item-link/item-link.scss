@@ -1,16 +1,26 @@
 
 .item-link-item {
     display: inline-block;
-    height: 35px;
-    width: 90%;
-    line-height: 35px;
-    padding: 0 10px 0 10px;
-    border-radius: 5px;
-    background-color: #00bcd4;
-    cursor: pointer;
+    width: 98%;
+    line-height: 50px;
+    padding: 0 0 0 10px;
+    font-size: 12px;
+    border-bottom: 1px solid lightgray;
     color: white;
-    font-weight: bold;
+    background-color: #00b8ff;
+    border-radius: 10px;
+    cursor: pointer;
+
+    .text-primary {
+        font-size: 1rem;
+    }
+
+    .text-secondary {
+        font-size: 12px;
+        padding-left: 10px;
+    }
 }
 .item-link-item:hover {
-    background-color: #0094a7;
+    color: white;
+    background-color: #009ffc;
 }

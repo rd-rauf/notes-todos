@@ -6,11 +6,14 @@ export default function Categories(props) {
     <div className="categories-container">
       { props.categories ?
         props.categories.map((cat) => (
-          <ItemLink
-            onClick={() => props.loadNotes(cat.id)}
-            key={cat.id}
-            text={cat["Note_Category_Name"]}
-          />
+          <>
+            <ItemLink
+              onClick={() => props.loadNotes(cat.id)}
+              key={cat.id}
+              text={cat["Note_Category_Name"]}
+            />
+            <hr style={ {width: '80%', color: 'lightgray'}} />
+          </>
         )) : "<span>No categories available!</span>" }
     </div>
   );
