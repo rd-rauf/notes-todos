@@ -9,9 +9,10 @@ import { getNotes } from "../../services/note.service";
 import { getEntries } from "../../services/entry.service";
 
 import "./content.scss";
+import TodosContainer from "../todos/todos-container";
 
 const Content = () => {
-  const [categories, setCategories] = useState([]);
+  /* const [categories, setCategories] = useState([]);
   const [notes, setNotes] = useState([]);
   const [entries, setEntries] = useState([]);
 
@@ -36,20 +37,22 @@ const Content = () => {
     const fetchCategories = async () => {
       const response = await getCategories();
       setCategories(response.data);
+      setNotes([]);
     };
     fetchCategories();
-  }, []);
+  }, []); */
 
   return (
     <>
       <ContentArea>
         <div className="main-container">
-          <Categories
+          {/* <Categories
             categories={categories}
             loadNotes={(categoryId) => loadNotes(categoryId)}
           />
           <Notes notes={notes} loadEntries={(noteId) => loadEntries(noteId)} />
-          <Entries entries={entries} />
+          <Entries entries={entries} /> */}
+          <TodosContainer />
         </div>
       </ContentArea>
     </>

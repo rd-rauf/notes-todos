@@ -1,0 +1,60 @@
+
+.todos-container {
+    overflow: auto;
+    height: 100%;
+    width: 75%;
+    padding: 10px;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.todos-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.todo-title-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.item-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.new-container {
+    margin: 10px;
+    button {
+        padding: 10px 20px;
+    }
+}
+
+.div-editable {
+    min-height: 200px;
+    font-size: 18px;
+    margin: 10px 0;
+    outline: none;
+}
+
+.not-started {
+    background-color: lightgray;
+}
+
+.in-progress {
+    background-color: rgb(250, 153, 153);
+}
+
+.completed {
+    background-color: rgb(163, 255, 163);
+}

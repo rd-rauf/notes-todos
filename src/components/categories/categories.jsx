@@ -4,17 +4,17 @@ import "./categories.scss";
 export default function Categories(props) {
   return (
     <div className="categories-container">
-      { props.categories ?
+      { props.categories && props.categories.length ?
         props.categories.map((cat) => (
           <>
             <ItemLink
               onClick={() => props.loadNotes(cat.id)}
               key={cat.id}
-              text={cat["Note_Category_Name"]}
+              text={cat["note_category_name"]}
             />
             <hr style={ {width: '80%', color: 'lightgray'}} />
           </>
-        )) : "<span>No categories available!</span>" }
+        )) : <span>No categories available!</span> }
     </div>
   );
 }

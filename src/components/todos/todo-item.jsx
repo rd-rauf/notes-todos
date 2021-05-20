@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+import ReactMarkdown from 'react-markdown'
+
+import "./todos.scss";
+import "./modal.scss";
+
+class TodoItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { item: { ...props.item } }
+    }
+
+    render() {
+        console.log(" ITEM rendered");
+        const { id, title, status, content } = this.props.item;
+        let cls = status.toLowerCase();
+        return (
+            <>
+                <div className="todos-item">
+                    <div className="todo-title-bar">
+                        <div className={`item-title ${cls}`}>{title}</div>
+                        <button id="myBtn" onClick={(e) => this.props.openDialog(e, this.props.item)}>
+                            Edit..
+                        </button>
+                    </div>
+                    <div className="item-content">
+                        <ReactMarkdown>
+                            {content}
+                        </ReactMarkdown>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
+export default TodoItem;
