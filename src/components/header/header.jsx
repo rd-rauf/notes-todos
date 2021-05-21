@@ -4,7 +4,7 @@ import './header.scss';
 export default function Header() {
   return (
     <header className="app-header">
-      <h2>Notes & Todos</h2>
+      <h2>Todos [with Notes]</h2>
     </header>
   );
 }

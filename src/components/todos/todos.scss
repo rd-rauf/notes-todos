@@ -10,7 +10,8 @@
 .todos-item {
     display: flex;
     flex-direction: column;
-    margin-bottom: 5px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .todo-title-bar {
@@ -30,13 +31,40 @@
     font-size: 18px;
     text-align: center;
     border: 1px solid lightgray;
-    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+}
+
+.item-content {
+    border: 0px solid lightgray;
+    margin: 5px 0;
+    padding: 0 5px;
+    border-radius: 5px;
 }
 
 .new-container {
     margin: 10px;
     button {
-        padding: 10px 20px;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        font-weight: bold;
+        border: 1px solid lightgray;
+        cursor: pointer;
+    }
+}
+
+.todo-title-bar {
+    button {
+        background-color: white;
+        color: black;
+        padding: 5px;
+        margin-left: 5px;
+        font-weight: bold;
+        border: 1px solid lightgray;
+        cursor: pointer;
     }
 }
 

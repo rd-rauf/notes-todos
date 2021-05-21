@@ -90,12 +90,14 @@ class TodosList extends Component {
         <div className="todos-list">
           {list.map((item) => {
             return (
-              <TodoItem
-                key={item.id}
-                item={item}
-                openDialog={(e) => this.openDialog(e, item)}
-                deleteTodo={(e) => this.deleteTodo(e, item)}
-              />
+              <>
+                <TodoItem
+                  key={item.id}
+                  item={item}
+                  openDialog={(e) => this.openDialog(e, item)}
+                  deleteTodo={(e) => this.deleteTodo(e, item)}
+                />
+              </>
             );
           })}
         </div>

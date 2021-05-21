@@ -28,7 +28,7 @@ class TodoItem extends Component {
                             Edit..
                         </button>
                         <button id="deleteButton" onClick={(e) => this.props.deleteTodo(e, this.props.item)}>
-                            Delete..
+                            Delete
                         </button>
                     </div>
                     <div className="item-content">

@@ -26,14 +26,19 @@ class TodosContainer extends Component {
 
   render() {
     const { list } = this.state;
-    /* if (list.length == 0) {
-      this.setState({ list: [{ isFixed: true }] });
-    } */
     return (
       <div className="todos-container">
         <div className="new-container">
           <button onClick={(e) => this.openAddDialog(e)}>Add..</button>
         </div>
+        {list.length == 0 ? (
+          <div style={{ textAlign: 'center' }}>
+            <hr />
+            <h2>
+              There is no note or todo. Click on 'Add' button to create one.
+            </h2>
+          </div>
+        ) : null}
         {list && list.length ? <TodosList list={list} /> : null}
         <AddMemoModal isAddModalOpen={this.state.isAddModalOpen} item={{}} />
       </div>
