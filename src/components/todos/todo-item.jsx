@@ -13,14 +13,22 @@ class TodoItem extends Component {
     render() {
         console.log(" ITEM rendered");
         const { id, title, status, content } = this.props.item;
+
+        if (!id) {
+            return null;
+        }
+
         let cls = status.toLowerCase();
         return (
             <>
                 <div className="todos-item">
                     <div className="todo-title-bar">
                         <div className={`item-title ${cls}`}>{title}</div>
-                        <button id="myBtn" onClick={(e) => this.props.openDialog(e, this.props.item)}>
+                        <button id="updateButton" onClick={(e) => this.props.openDialog(e, this.props.item)}>
                             Edit..
+                        </button>
+                        <button id="deleteButton" onClick={(e) => this.props.deleteTodo(e, this.props.item)}>
+                            Delete..
                         </button>
                     </div>
                     <div className="item-content">

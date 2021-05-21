@@ -6,6 +6,13 @@ function getTodos() {
     .get("/todos?_sort=created_at:DESC");
 }
 
+function createTodo(todoItem) {
+  return axiosInstance
+    .post("/todos", {
+      ...todoItem
+    });
+}
+
 function updateTodo(todoItem) {
   return axiosInstance
     .put("/todos/" + todoItem.id, {
@@ -13,7 +20,14 @@ function updateTodo(todoItem) {
     });
 }
 
+function deleteTodo(todoItem) {
+  return axiosInstance
+    .delete("/todos/" + todoItem.id);
+}
+
 export {
   getTodos,
-  updateTodo
+  updateTodo,
+  createTodo,
+  deleteTodo
 }
