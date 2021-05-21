@@ -31,7 +31,7 @@ class TodosContainer extends Component {
         <div className="new-container">
           <button onClick={(e) => this.openAddDialog(e)}>Add..</button>
         </div>
-        {list.length == 0 ? (
+        {list.length === 0 ? (
           <div style={{ textAlign: 'center' }}>
             <hr />
             <h2>
