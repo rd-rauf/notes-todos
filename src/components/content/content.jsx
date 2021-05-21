@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+/* import { useState, useEffect } from "react";
 import Categories from "../categories/categories";
 import Entries from "../entries/entries";
-import Notes from "../notes/notes";
+import Notes from "../notes/notes"; */
 import ContentArea from "./content-area";
 
-import { getCategories } from "../../services/category.service";
+/* import { getCategories } from "../../services/category.service";
 import { getNotes } from "../../services/note.service";
-import { getEntries } from "../../services/entry.service";
+import { getEntries } from "../../services/entry.service"; */
 
 import "./content.scss";
 import TodosContainer from "../todos/todos-container";

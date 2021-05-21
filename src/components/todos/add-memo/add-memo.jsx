@@ -48,7 +48,7 @@ class AddMemoModal extends Component {
   }
 
   handleAdd = async (e, id) => {
-    const response = await createTodo(this.state.newItem);
+    await createTodo(this.state.newItem);
     window.location.reload();
     this.closeAddModal(e);
   }

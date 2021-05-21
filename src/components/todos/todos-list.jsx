@@ -6,7 +6,6 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 import { updateTodo, deleteTodo } from "../../services/todos.service";
 import TodoItem from "./todo-item";
-import AddMemoModal from "./add-memo/add-memo";
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -56,7 +55,7 @@ class TodosList extends Component {
   };
 
   deleteTodo = async (e, item) => {
-    const response = await deleteTodo(item);
+    await deleteTodo(item);
     window.location.reload();
   };
 
@@ -69,10 +68,10 @@ class TodosList extends Component {
 
   handleUpdate = async (e, id) => {
     const updatedItem = this.state.modalItem;
-    const response = await updateTodo(updatedItem);
+    await updateTodo(updatedItem);
 
     const newList = this.state.list.map((item) => {
-      if (item.id == updatedItem.id) {
+      if (item.id === updatedItem.id) {
         return updatedItem;
       } else {
         return item;
@@ -98,8 +97,6 @@ class TodosList extends Component {
                 deleteTodo={(e) => this.deleteTodo(e, item)}
               />
             );
-            if (item["isFixed"] === false) {
-            }
           })}
         </div>
 
