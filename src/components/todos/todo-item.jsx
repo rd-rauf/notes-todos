@@ -11,7 +11,7 @@ class TodoItem extends Component {
 
   render() {
     console.log(" ITEM rendered");
-    const { id, title, status, content } = this.props.item;
+    const { id, title, status, created_at, content } = this.props.item;
 
     if (!id) {
       return null;
@@ -22,9 +22,11 @@ class TodoItem extends Component {
         <div className="todos-item">
           <div className="todo-title-bar">
             <div className={`item-title ${cls}`}>{title}
-              {/* <div className="additional-info">
-                <i>Subtitle: </i> { subtitle }
-              </div> */}
+              <div className="additional-info">
+                {/* <span className="subtitle-info"><i>Subtitle: </i> { subtitle ? subtitle : '-' }</span> */}
+                <span className="subtitle-info">Status: { status ? status : '-' }</span>
+                <span className="subtitle-info">Created On: { created_at ? (new Date(Date.parse(created_at)).toLocaleString()) : '-' }</span>
+              </div>
             </div>
             <button
               id="updateButton"
