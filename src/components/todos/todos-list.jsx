@@ -1,19 +1,8 @@
 import React, { Component } from "react";
-
-import ReactMde from "react-mde";
-import * as Showdown from "showdown";
-import "react-mde/lib/styles/css/react-mde-all.css";
-import "./form.scss";
-
-import { updateTodo, deleteTodo } from "../../services/todos.service";
 import TodoItem from "./todo-item";
+import UpdateMemo from "./update-memo/update-memo";
 
-const converter = new Showdown.Converter({
-  tables: true,
-  simplifiedAutoLink: true,
-  strikethrough: true,
-  tasklists: true,
-});
+import { deleteTodo } from "../../services/todos.service";
 
 class TodosList extends Component {
   constructor(props) {
@@ -23,36 +12,17 @@ class TodosList extends Component {
       modalItem: null,
       newItem: {},
       selectedTab: null,
+      showDialog: false,
     };
   }
-
-  onChange = (e) => {
-    this.setState({
-      modalItem: { ...this.state.modalItem, content: e },
-    });
-  };
-
-  onTabChange = (e) => {
-    this.setState({
-      selectedTab: e,
-    });
-  };
 
   openDialog = (e, item) => {
     this.setState({
       modalItem: item,
       selectedTab: "write",
+      showDialog: true,
+      item: item,
     });
-    const modal = document.getElementById("myModal");
-    if (modal) {
-      const span = document.getElementsByClassName("close")[0];
-      if (span) {
-        span.onclick = function () {
-          modal.style.display = "none";
-        };
-      }
-      modal.style.display = "block";
-    }
   };
 
   deleteTodo = async (e, item) => {
@@ -65,34 +35,6 @@ class TodosList extends Component {
     if (modal) {
       modal.style.display = "none";
     }
-  };
-
-  onTitleChanged = (e) => {
-    this.setState({
-      modalItem: { ...this.state.modalItem, title: e.target.value },
-    });
-  }
-
-  handleStatusChange = async (e, id) => {
-    this.setState({
-      modalItem: { ...this.state.modalItem, status: e.target.value },
-    });
-  }
-
-  handleUpdate = async (e, id) => {
-    const updatedItem = this.state.modalItem;
-    await updateTodo(updatedItem);
-
-    const newList = this.state.list.map((item) => {
-      if (item.id === updatedItem.id) {
-        return updatedItem;
-      } else {
-        return item;
-      }
-    });
-
-    this.setState({ list: newList });
-    this.closeModal(e);
   };
 
   render() {
@@ -114,56 +56,11 @@ class TodosList extends Component {
             );
           })}
         </div>
-
-        <div id={"myModal"} className="modal">
-          <div className="modal-content">
-            <div className="bar"></div>
-            <span className={"close close"}>&times;</span>
-            <div className="content">
-              <div className="">
-                {this.state.modalItem ? (
-                  <>
-                    <div className="form-control">
-                      <label>Enter a title:</label>
-                      <input
-                        id="title"
-                        type="text"
-                        onChange={this.onTitleChanged}
-                        value={this.state.modalItem.title}
-                      />
-                    </div>
-                    <div className="form-control">
-                      <label>Select a status:</label>
-                      <select onChange={(e) => this.handleStatusChange(e)} value={this.state.modalItem.status}>
-                        <option value="not-started">Not Started</option>
-                        <option value="in-progress">In Progress</option>
-                        <option value="completed">Completed</option>
-                      </select>
-                    </div>
-                    <div className="form-control">
-                      <label>Enter content:</label>
-                      <ReactMde
-                        value={this.state.modalItem.content}
-                        onChange={(e) => this.onChange(e)}
-                        onTabChange={(e) => this.onTabChange(e)}
-                        selectedTab={this.state.selectedTab}
-                        generateMarkdownPreview={(markdown) =>
-                          Promise.resolve(converter.makeHtml(markdown))
-                        }
-                      />
-                    </div>
-                  </>
-                ) : null}
-              </div>
-            </div>
-            <hr />
-            <div className="footer">
-              <button onClick={(e) => this.handleUpdate(e)}>OK</button>
-              &nbsp;&nbsp;
-              <button onClick={(e) => this.closeModal(e)}>Cancel</button>
-            </div>
-          </div>
-        </div>
+        <UpdateMemo
+          showModal={this.state.showDialog}
+          item={this.state.item}
+          mode={"update"}
+        />
       </>
     );
   }
