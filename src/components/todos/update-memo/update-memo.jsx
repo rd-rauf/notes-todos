@@ -65,11 +65,28 @@ class UpdateMemo extends Component {
     });
   };
 
-  handleUpdate = async (e, id) => {
+  handleUpdate = async (e) => {
+    e.preventDefault();
     const item = this.state.item;
-
-    if (!item.status) {
-      item.status = "not-started";
+    if (!this.state.item.title) {
+      alert("Title is required");
+      return;
+    }
+    if (!this.state.item.title.trim()) {
+      alert("Title is required");
+      return;
+    }
+    if (!this.state.item.status) {
+      alert("Status is required");
+      return;
+    }
+    if (!this.state.item.content) {
+      alert("Content is required");
+      return;
+    }
+    if (!this.state.item.content.trim()) {
+      alert("Content is required");
+      return;
     }
     if (this.props.mode === "add") {
       await createTodo(item);
@@ -96,7 +113,7 @@ class UpdateMemo extends Component {
             </span>
             <div>
               {this.state.item ? (
-                <>
+                <form onSubmit={this.handleUpdate}>
                   <div className="form-control">
                     <label>Enter a title:</label>
                     <input
@@ -111,6 +128,7 @@ class UpdateMemo extends Component {
                     <select
                       onChange={(e) => this.handleStatusChange(e)}
                       value={this.state.item.status}
+                      
                     >
                       <option value="not-started">Not Started</option>
                       <option value="in-progress">In Progress</option>
@@ -133,13 +151,15 @@ class UpdateMemo extends Component {
                       }
                     />
                   </div>
-                </>
+                  <div className="footer">
+                    <button type="submit">Save</button>
+                    &nbsp;&nbsp;
+                    <button onClick={(e) => this.handleCloseModal(e)}>
+                      Cancel
+                    </button>
+                  </div>
+                </form>
               ) : null}
-            </div>
-            <div className="footer">
-              <button onClick={(e) => this.handleUpdate(e)}>Save</button>
-              &nbsp;&nbsp;
-              <button onClick={(e) => this.handleCloseModal(e)}>Cancel</button>
             </div>
           </div>
         </ReactModal>

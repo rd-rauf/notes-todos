@@ -48,7 +48,7 @@ class TodosContainer extends Component {
           showModal={this.state.showModal}
           handleCloseModal={(e) => this.handleCloseModal(e)}
           mode={"add"}
-          item={{}}
+          item={{ status: 'not-started' }}
         />
       </div>
     );

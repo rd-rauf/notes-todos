@@ -16,13 +16,16 @@ class TodoItem extends Component {
     if (!id) {
       return null;
     }
-
     let cls = status ? status.toLowerCase() : 'not-started';
     return (
       <>
         <div className="todos-item">
           <div className="todo-title-bar">
-            <div className={`item-title ${cls}`}>{title}</div>
+            <div className={`item-title ${cls}`}>{title}
+              {/* <div className="additional-info">
+                <i>Subtitle: </i> { subtitle }
+              </div> */}
+            </div>
             <button
               id="updateButton"
               onClick={(e) => this.props.openDialog(e, this.props.item)}
