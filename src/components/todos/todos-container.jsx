@@ -34,9 +34,9 @@ class TodosContainer extends Component {
         {list.length === 0 ? (
           <div style={{ textAlign: 'center' }}>
             <hr />
-            <h2>
-              There is no note or todo. Click on 'Add' button to create one.
-            </h2>
+            <h4>
+              There is no todo item. Click on 'Add' button to create one.
+            </h4>
           </div>
         ) : null}
         {list && list.length ? <TodosList list={list} /> : null}

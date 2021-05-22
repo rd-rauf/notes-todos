@@ -121,6 +121,7 @@ class TodosList extends Component {
                 ) : null}
               </div>
             </div>
+            <hr />
             <div className="footer">
               <button onClick={(e) => this.handleUpdate(e)}>OK</button>
               &nbsp;&nbsp;

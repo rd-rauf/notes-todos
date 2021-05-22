@@ -23,7 +23,7 @@ class AddMemoModal extends Component {
     };
   }
 
-  onAddChange = (e) => {
+  onMarkdownChange = (e) => {
     this.setState({
       newItem: { ...this.state.newItem, content: e },
     });
@@ -51,6 +51,12 @@ class AddMemoModal extends Component {
     await createTodo(this.state.newItem);
     window.location.reload();
     this.closeAddModal(e);
+  }
+
+  handleStatusChange = async (e, id) => {
+    this.setState({
+      newItem: { ...this.state.newItem, status: e.target.value },
+    });
   }
 
   closeAddModal = (e) => {
@@ -83,23 +89,34 @@ class AddMemoModal extends Component {
             <span className={"close close-add"}>&times;</span>
             <div className="content">
               <div className="">
-                <label>Enter a title:</label>
-                <br />
-                <input id="title" type="text" onChange={this.onTitleChanged} />
-                <br />
-                <label>Enter content:</label>
-                <br />
-                <ReactMde
-                  value={this.state.newItem.content}
-                  onChange={(e) => this.onAddChange(e)}
-                  onTabChange={(e) => this.onTabChange(e)}
-                  selectedTab={this.state.selectedTab}
-                  generateMarkdownPreview={(markdown) =>
-                    Promise.resolve(converter.makeHtml(markdown))
-                  }
+                <div className="form-control">
+                  <label>Enter a title:</label>
+                  <input id="title" type="text" onChange={this.onTitleChanged} />
+                </div>
+                <div className="form-control">
+                  <label>Select a status:</label>
+                  <select onChange={(e) => this.handleStatusChange(e)}>
+                    <option value="not-started">Not Started</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+                <div className="form-control">
+                  <label>Enter content:</label>
+                  <ReactMde
+                    value={this.state.newItem.content}
+                    onChange={(e) => this.onMarkdownChange(e)}
+                    onTabChange={(e) => this.onTabChange(e)}
+                    selectedTab={this.state.selectedTab}
+                    generateMarkdownPreview={(markdown) =>
+                      Promise.resolve(converter.makeHtml(markdown))
+                    }
                 />
+                </div>
+                <br />
               </div>
             </div>
+            <hr />
             <div className="footer">
               <button onClick={(e) => this.handleAdd(e)}>OK</button>
               &nbsp;&nbsp;
