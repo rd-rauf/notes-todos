@@ -115,6 +115,9 @@ class UpdateMemo extends Component {
                       <option value="not-started">Not Started</option>
                       <option value="in-progress">In Progress</option>
                       <option value="completed">Completed</option>
+                      <option value="on-hold">On Hold</option>
+                      <option value="deferred">Deferred</option>
+                      <option value="reassigned">Reassigned</option>
                     </select>
                   </div>
                   <div className="form-control">
