@@ -50,14 +50,16 @@
 
 .footer {
   margin: 10px 0 0 0;
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 
-    button {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-    }
+  button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+
+    border: 1px solid lightgray;
+  }
 }
 
 .mde-text {

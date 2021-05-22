@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactMde from "react-mde";
 import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
+import "./form.scss";
 
 import { updateTodo, deleteTodo } from "../../services/todos.service";
 import TodoItem from "./todo-item";
@@ -66,6 +67,18 @@ class TodosList extends Component {
     }
   };
 
+  onTitleChanged = (e) => {
+    this.setState({
+      modalItem: { ...this.state.modalItem, title: e.target.value },
+    });
+  }
+
+  handleStatusChange = async (e, id) => {
+    this.setState({
+      modalItem: { ...this.state.modalItem, status: e.target.value },
+    });
+  }
+
   handleUpdate = async (e, id) => {
     const updatedItem = this.state.modalItem;
     await updateTodo(updatedItem);
@@ -109,15 +122,37 @@ class TodosList extends Component {
             <div className="content">
               <div className="">
                 {this.state.modalItem ? (
-                  <ReactMde
-                    value={this.state.modalItem.content}
-                    onChange={(e) => this.onChange(e)}
-                    onTabChange={(e) => this.onTabChange(e)}
-                    selectedTab={this.state.selectedTab}
-                    generateMarkdownPreview={(markdown) =>
-                      Promise.resolve(converter.makeHtml(markdown))
-                    }
-                  />
+                  <>
+                    <div className="form-control">
+                      <label>Enter a title:</label>
+                      <input
+                        id="title"
+                        type="text"
+                        onChange={this.onTitleChanged}
+                        value={this.state.modalItem.title}
+                      />
+                    </div>
+                    <div className="form-control">
+                      <label>Select a status:</label>
+                      <select onChange={(e) => this.handleStatusChange(e)} value={this.state.modalItem.status}>
+                        <option value="not-started">Not Started</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                      </select>
+                    </div>
+                    <div className="form-control">
+                      <label>Enter content:</label>
+                      <ReactMde
+                        value={this.state.modalItem.content}
+                        onChange={(e) => this.onChange(e)}
+                        onTabChange={(e) => this.onTabChange(e)}
+                        selectedTab={this.state.selectedTab}
+                        generateMarkdownPreview={(markdown) =>
+                          Promise.resolve(converter.makeHtml(markdown))
+                        }
+                      />
+                    </div>
+                  </>
                 ) : null}
               </div>
             </div>
