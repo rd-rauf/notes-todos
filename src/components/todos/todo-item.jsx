@@ -11,7 +11,7 @@ class TodoItem extends Component {
 
   render() {
     console.log(" ITEM rendered");
-    const { id, title, status, created_at, content } = this.props.item;
+    const { id, title, status, created_at, updated_at, content } = this.props.item;
 
     if (!id) {
       return null;
@@ -26,6 +26,7 @@ class TodoItem extends Component {
                 {/* <span className="subtitle-info"><i>Subtitle: </i> { subtitle ? subtitle : '-' }</span> */}
                 <span className="subtitle-info">Status: { status ? status : '-' }</span>
                 <span className="subtitle-info">Created On: { created_at ? (new Date(Date.parse(created_at)).toLocaleString()) : '-' }</span>
+                <span className="subtitle-info">Last Updated On: { updated_at ? (new Date(Date.parse(updated_at)).toLocaleString()) : '-' }</span>
               </div>
             </div>
             <button
