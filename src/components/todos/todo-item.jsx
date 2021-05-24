@@ -35,12 +35,12 @@ class TodoItem extends Component {
             >
               Edit..
             </button>
-            <button
+            {/* <button
               id="deleteButton"
               onClick={(e) => this.props.deleteTodo(e, this.props.item)}
             >
               Delete
-            </button>
+            </button> */}
           </div>
           <div className="item-content">
             <ReactMarkdown>{content}</ReactMarkdown>
