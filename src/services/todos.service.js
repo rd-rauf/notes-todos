@@ -3,7 +3,7 @@ import axiosInstance from "../core/axios";
 
 function getTodos() {
   return axiosInstance
-    .get("/todos?_sort=created_at:DESC");
+    .get("/todos?_sort=updated_at:DESC");
 }
 
 function createTodo(todoItem) {

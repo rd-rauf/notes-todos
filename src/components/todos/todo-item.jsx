@@ -10,7 +10,6 @@ class TodoItem extends Component {
   }
 
   render() {
-    console.log(" ITEM rendered");
     const { id, title, status, created_at, updated_at, content } = this.props.item;
 
     if (!id) {

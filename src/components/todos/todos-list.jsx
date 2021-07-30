@@ -38,7 +38,6 @@ class TodosList extends Component {
   };
 
   render() {
-    console.log(" LIST rendered");
     const { list } = this.state;
     return (
       <>
